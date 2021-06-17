@@ -1,0 +1,22 @@
+{
+  "name": "farrow-api-playground",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "repository": "git@github.com:tqma113/farrow-api-playground.git",
+  "author": "Ma Tianqi <mtq1997@126.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "lerna run build",
+    "bootstrap": "lerna bootstrap",
+    "init": "lerna init",
+    "clean": "lerna clean",
+    "reset": "yarn clean && yarn install && yarn build",
+    "format": "prettier . --write"
+  },
+  "devDependencies": {
+    "lerna": "^3.18.3",
+    "prettier": "^2.3.1"
+  }
+}
