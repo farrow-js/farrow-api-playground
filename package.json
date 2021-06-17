@@ -1,0 +1,10 @@
+{
+  "name": "farrow-api-playground",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "repository": "git@github.com:tqma113/farrow-api-playground.git",
+  "author": "Ma Tianqi <mtq1997@126.com>",
+  "license": "MIT"
+}
