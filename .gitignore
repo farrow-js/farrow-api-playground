@@ -105,3 +105,10 @@ dist
 
 # electron
 out
+
+# OSX
+.DS_Store
+
+packages/farrow-api-playground-electron/release/app/dist
+packages/farrow-api-playground-electron/release/build
+packages/farrow-api-playground-electron/.erb/dll
