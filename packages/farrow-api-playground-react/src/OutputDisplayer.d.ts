@@ -1,2 +1,2 @@
 /// <reference types="react" />
-export declare const OutputDisplayer: () => JSX.Element;
+export declare const OutputDisplayer: () => JSX.Element

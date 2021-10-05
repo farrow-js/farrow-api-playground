@@ -20,7 +20,15 @@ const defaultOptions: monaco.editor.IStandaloneEditorConstructionOptions = {
   fontSize: 12,
 }
 
-export const JSONDisplayer = ({ id, onSave, onError, style, containerStyle, value = '', schema }: MonacoEditorProps) => {
+export const JSONDisplayer = ({
+  id,
+  onSave,
+  onError,
+  style,
+  containerStyle,
+  value = '',
+  schema,
+}: MonacoEditorProps) => {
   const [code] = useState(value)
   const containerRef = useRef<HTMLDivElement>(null)
   const editor = useRef<monaco.editor.IStandaloneCodeEditor>()
@@ -93,9 +101,9 @@ const createEditor = (
     allowComments: true,
     schemaValidation: 'warning',
     schemaRequest: 'warning',
-    trailingCommas: 'warning'
-  });
-  const modelUri = monaco.Uri.parse(`a://b/${id}-output.json`);
+    trailingCommas: 'warning',
+  })
+  const modelUri = monaco.Uri.parse(`a://b/${id}-output.json`)
   const model = monaco.editor.createModel(value, 'json', modelUri)
   const editor = monaco.editor.create(container, {
     ...options,
@@ -104,13 +112,13 @@ const createEditor = (
     model,
     readOnly: true,
     minimap: {
-      enabled: false
-    }
+      enabled: false,
+    },
   })
-  const messageContribution = editor.getContribution('editor.contrib.messageController');
+  const messageContribution = editor.getContribution('editor.contrib.messageController')
   const diposable = editor.onDidAttemptReadOnlyEdit(() => {
-    messageContribution.dispose();
-  });
+    messageContribution.dispose()
+  })
 
   return editor
 }

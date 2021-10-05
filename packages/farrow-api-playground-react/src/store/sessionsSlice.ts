@@ -105,7 +105,7 @@ export const sessionsSlice = createSlice({
     updaetInput: (state, { payload: { id, input } }: PayloadAction<{ id: string; input: string }>) => {
       state.sessions.forEach((session) => {
         if (session.id === id) {
-          session.apis.forEach(api => {
+          session.apis.forEach((api) => {
             api.input = input
           })
         }
@@ -114,7 +114,7 @@ export const sessionsSlice = createSlice({
     setOutput: (state, { payload: { id, output } }: PayloadAction<{ id: string; output: string }>) => {
       state.sessions.forEach((session) => {
         if (session.id === id) {
-          session.apis.forEach(api => {
+          session.apis.forEach((api) => {
             api.output = output
           })
         }
@@ -129,7 +129,6 @@ export const sessionActions = sessionsSlice.actions
 export const sessionsReducer = sessionsSlice.reducer
 
 export const selectCount = (state: RootState) => state.sessions.sessions
-
 
 const transformEntries = (entries: FormatEntries | null, path: string[] = []): API[] => {
   if (!entries) return []
@@ -147,7 +146,7 @@ const transformEntries = (entries: FormatEntries | null, path: string[] = []): A
         name: key,
         path: newPath,
         input: '',
-        output: ''
+        output: '',
       })
     } else {
       list.push({
@@ -156,7 +155,7 @@ const transformEntries = (entries: FormatEntries | null, path: string[] = []): A
         name: key,
         path: newPath,
         input: '',
-        output: ''
+        output: '',
       })
     }
   }

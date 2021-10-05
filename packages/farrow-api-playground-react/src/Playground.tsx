@@ -27,9 +27,8 @@ export type SinglePlaygroundProps = {
   isCurrent: boolean
 }
 
-
 const findAPI = (apis: API[], name: string): API | null => {
-  for(const api of apis) {
+  for (const api of apis) {
     if (api.name === name) return api
     if (api.children) {
       const result = findAPI(api.children, name)
@@ -42,7 +41,10 @@ const findAPI = (apis: API[], name: string): API | null => {
 
 const SinglePlayground = ({ session, isCurrent }: SinglePlaygroundProps) => {
   const id = useAppSelector((state) => state.sessions.activeSessionId)
-  const api = useMemo(() => findAPI(session.apis, session.title), [session, session.schema, session.title, session.apis])
+  const api = useMemo(
+    () => findAPI(session.apis, session.title),
+    [session, session.schema, session.title, session.apis],
+  )
 
   const dispatch = useAppDispatch()
 
@@ -56,13 +58,15 @@ const SinglePlayground = ({ session, isCurrent }: SinglePlaygroundProps) => {
     }
     const pipeline = createApiPipelineWithUrl(session.servicePath)
     console.log(api?.input)
-    pipeline.invoke({
-      type: 'Single',
-      path: api.path,
-      input: JSON.parse(api?.input || '{}')
-    }).then(res => {
-      dispatch(sessionActions.setOutput({ id, output: JSON.stringify(res) }))
-    })
+    pipeline
+      .invoke({
+        type: 'Single',
+        path: api.path,
+        input: JSON.parse(api?.input || '{}'),
+      })
+      .then((res) => {
+        dispatch(sessionActions.setOutput({ id, output: JSON.stringify(res) }))
+      })
   }
 
   const handleSendClick = () => {
@@ -91,17 +95,17 @@ const SinglePlayground = ({ session, isCurrent }: SinglePlaygroundProps) => {
         <JSONDisplayer
           id={session.id}
           value={api?.output || ''}
-          style={{ width: '100%', height: 'auto', minHeight: '450px' }} />
+          style={{ width: '100%', height: 'auto', minHeight: '450px' }}
+        />
       </OutDisplayerContainer>
     </SinglePlaygroundContainer>
   )
 }
 
-const InputEditorContainer = styled.div`
-`
+const InputEditorContainer = styled.div``
 
 const OutDisplayerContainer = styled.div`
-margin-top: 20px;
+  margin-top: 20px;
 `
 
 export type SinglePlaygroundContainerProps = {

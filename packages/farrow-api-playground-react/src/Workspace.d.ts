@@ -1,2 +1,2 @@
 /// <reference types="react" />
-export declare const Workspace: () => JSX.Element;
+export declare const Workspace: () => JSX.Element

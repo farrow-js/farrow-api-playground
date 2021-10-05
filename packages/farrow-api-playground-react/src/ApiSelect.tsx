@@ -196,8 +196,8 @@ const ApiSelectController = styled.div<ApiSelectControllerProps>`
   outline-radius: 3px;
   border-radius: 3px;
   outline: none;
-  background: ${({ focused }) => focused ? '#fff' : '#ececec'};
-  box-shadow: ${({ focused }) => focused ? '0 0 0 1px #d4d4d4' : ''};
+  background: ${({ focused }) => (focused ? '#fff' : '#ececec')};
+  box-shadow: ${({ focused }) => (focused ? '0 0 0 1px #d4d4d4' : '')};
   &:hover {
     box-shadow: 0 0 0 1px #d4d4d4;
   }
@@ -230,12 +230,12 @@ const ApiSelectInputContainer = styled.div`
 `
 
 const ApiSelectInput = styled.input`
-  color: rgb(80,80,80);
+  color: rgb(80, 80, 80);
   font-weight: 500;
   cursor: default;
   border: none;
   font-size: 14px;
-  background: inherit;;
+  background: inherit;
   &:focus {
     border: none;
     outline: none;
@@ -308,5 +308,5 @@ const OptionsContainer = styled.div`
   padding: 8px;
   max-height: 400px;
   background-color: #fff;
-  box-shadow: 0 6px 16px -8px #00000014, 0 9px 28px #0000000d, 0 12px 48px 16px #00000008;;
+  box-shadow: 0 6px 16px -8px #00000014, 0 9px 28px #0000000d, 0 12px 48px 16px #00000008; ;
 `

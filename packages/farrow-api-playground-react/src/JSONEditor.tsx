@@ -21,7 +21,16 @@ const defaultOptions: monaco.editor.IStandaloneEditorConstructionOptions = {
   fontSize: 12,
 }
 
-export const JSONEditor = ({ id, onSave, onError, style, current, containerStyle, value = '', schema }: MonacoEditorProps) => {
+export const JSONEditor = ({
+  id,
+  onSave,
+  onError,
+  style,
+  current,
+  containerStyle,
+  value = '',
+  schema,
+}: MonacoEditorProps) => {
   const [code] = useState(value)
   const containerRef = useRef<HTMLDivElement>(null)
   const editor = useRef<monaco.editor.IStandaloneCodeEditor>()
@@ -35,8 +44,6 @@ export const JSONEditor = ({ id, onSave, onError, style, current, containerStyle
     }
   }, [schema, current])
 
-
-
   const initMonaco = () => {
     monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
       validate: true,
@@ -47,7 +54,15 @@ export const JSONEditor = ({ id, onSave, onError, style, current, containerStyle
         },
       ],
     })
-    const result = createEditor(id, containerRef.current as HTMLElement, code, defaultOptions, model.current, onSave, onError)
+    const result = createEditor(
+      id,
+      containerRef.current as HTMLElement,
+      code,
+      defaultOptions,
+      model.current,
+      onSave,
+      onError,
+    )
     editor.current = result[0]
     model.current = result[1]
   }
@@ -92,9 +107,9 @@ const createEditor = (
     allowComments: true,
     schemaValidation: 'warning',
     schemaRequest: 'warning',
-    trailingCommas: 'warning'
-  });
-  const modelUri = monaco.Uri.parse(`a://b/${id}-input.json`);
+    trailingCommas: 'warning',
+  })
+  const modelUri = monaco.Uri.parse(`a://b/${id}-input.json`)
   const model = _model || monaco.editor.createModel(value, 'json', modelUri)
   const editor = monaco.editor.create(container, {
     ...options,
@@ -102,12 +117,12 @@ const createEditor = (
     language: 'json',
     model,
     minimap: {
-      enabled: false
-    }
+      enabled: false,
+    },
   })
   model.onDidChangeContent(() => {
     onSave && onSave(model.getValue())
-  });
+  })
 
   return [editor, model] as const
 }
