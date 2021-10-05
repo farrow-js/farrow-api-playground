@@ -1,8 +1,6 @@
-import React from 'react'
-import logo from './logo.svg'
 import './App.css'
 
-import { Workspace } from './Playground'
+import { Workspace } from 'farrow-api-playground-react'
 
 function App() {
   return <Workspace />
