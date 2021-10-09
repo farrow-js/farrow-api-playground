@@ -1,4 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+// FIXME: https://github.com/microsoft/TypeScript/issues/42873
+import 'immer'
 import type { RootState } from '../store'
 
 export type Config = {

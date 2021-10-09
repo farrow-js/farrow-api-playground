@@ -1,4 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+// FIXME: https://github.com/microsoft/TypeScript/issues/42873
+import 'immer'
 import { FormatResult } from 'farrow-api/dist/toJSON'
 import { v4 as uuid } from 'uuid'
 import { FormatEntries } from 'farrow-api/dist/toJSON'

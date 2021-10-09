@@ -1,4 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
+// FIXME: https://github.com/microsoft/TypeScript/issues/42873
+import 'redux-thunk'
 import { sessionsReducer } from './sessionsSlice'
 import { configReducer } from './configSlice'
 
