@@ -325,7 +325,7 @@ importers:
       '@types/uuid': ^8.3.0
       farrow: ^1.10.8
       farrow-api: ^1.10.8
-      farrow-api-client: ^1.10.9
+      farrow-api-client: 1.10.11
       farrow-api-server: ^1.10.8
       farrow-pipeline: ^1.10.6
       farrow-schema: ^1.10.8
@@ -348,7 +348,7 @@ importers:
       '@types/styled-components': 5.1.14
       farrow: 1.10.9_farrow-pipeline@1.10.7
       farrow-api: 1.10.9_e881b1b549c0b1ee66de45efbadb6de3
-      farrow-api-client: 1.10.10_farrow-pipeline@1.10.7
+      farrow-api-client: 1.10.11_farrow-pipeline@1.10.7
       farrow-api-server: 1.10.9_a1e54e8b66ac2dcf354b8313f9677329
       farrow-pipeline: 1.10.7
       farrow-schema: 1.10.8
@@ -7376,7 +7376,7 @@ packages:
       whatwg-url: 8.7.0
 
   /dataloader/2.0.0:
-    resolution: {integrity: sha512-YzhyDAwA4TaQIhM5go+vCLmU0UikghC/t9DTQYZR2M/UvZ1MdOhPezSDZcjj9uqQJOMqjLcpWtyW2iNINdlatQ==}
+    resolution: {integrity: sha1-QerxI9sRWYfiHKk8AFzXdTxV/m8=}
     dev: false
 
   /date-fns/2.25.0:
@@ -9068,8 +9068,8 @@ packages:
     engines: {'0': node >=0.6.0}
     dev: true
 
-  /farrow-api-client/1.10.10_farrow-pipeline@1.10.7:
-    resolution: {integrity: sha512-vLAJDJIyDKLuDamWduUyZrqYXAIN1CoEjCs5o77ze0YgMROoasYOB/+ywVpD3L0ouHkaUvtv61vUIeC5v3OHhg==}
+  /farrow-api-client/1.10.11_farrow-pipeline@1.10.7:
+    resolution: {integrity: sha512-mMMeDWk8dR+/mCsrs046SX6iMISYJ0fqTf0QJVPuea7S72eRUx1rfSIQPdW7FqUiV4qNl0Uz49luk6IjYVPXSw==}
     peerDependencies:
       farrow-pipeline: ^1.10.7
     dependencies:
@@ -11010,7 +11010,7 @@ packages:
     engines: {node: '>=0.10.0'}
 
   /isomorphic-unfetch/3.1.0:
-    resolution: {integrity: sha512-geDJjpoZ8N0kWexiwkX8F9NkTsXhetLPVbZFQ+JTW239QNOwvB0gniuR1Wc6f0AMTn7/mFGyXvHTifrCp/GH8Q==}
+    resolution: {integrity: sha1-hzQdX097Y4Q9RoQ4Eoywh7fD6Y8=}
     dependencies:
       node-fetch: 2.6.5
       unfetch: 4.2.0
@@ -18134,7 +18134,7 @@ packages:
       which-boxed-primitive: 1.0.2
 
   /unfetch/4.2.0:
-    resolution: {integrity: sha512-F9p7yYCn6cIW9El1zi0HI6vqpeIvBsr3dSuRO6Xuppb1u5rXpCPmMvLSyECLhybr9isec8Ohl0hPekMVrEinDA==}
+    resolution: {integrity: sha1-fiGw7302PY2a8PuSmlVV9u+Xo74=}
     dev: false
 
   /unicode-canonical-property-names-ecmascript/2.0.0:

@@ -27,7 +27,7 @@
     "@types/styled-components": "^5.1.10",
     "farrow": "^1.10.8",
     "farrow-api": "^1.10.8",
-    "farrow-api-client": "^1.10.9",
+    "farrow-api-client": "1.10.11",
     "farrow-api-server": "^1.10.8",
     "farrow-pipeline": "^1.10.6",
     "farrow-schema": "^1.10.8",

@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import styled from 'styled-components'
 import { createApiPipelineWithUrl } from 'farrow-api-client'
+import { ApiRequest, ApiResponse } from 'farrow-api-server'
 import { JSONEditor } from './JSONEditor'
 import { JSONDisplayer } from './JSONDisplayer'
 
@@ -39,6 +40,24 @@ const findAPI = (apis: API[], name: string): API | null => {
   return null
 }
 
+const fetcher = async (request: ApiRequest): Promise<ApiResponse> => {
+  const { url, calling, options: init } = request
+  const options: RequestInit = {
+    method: 'POST',
+    ...init,
+    headers: {
+      'Content-Type': 'application/json',
+      ...init?.headers,
+    },
+    body: JSON.stringify(calling),
+  }
+  const response = await fetch(url, options)
+  const text = await response.text()
+  const json = JSON.parse(text) as ApiResponse
+
+  return json
+}
+
 const SinglePlayground = ({ session, isCurrent }: SinglePlaygroundProps) => {
   const id = useAppSelector((state) => state.sessions.activeSessionId)
   const api = useMemo(
@@ -56,9 +75,9 @@ const SinglePlayground = ({ session, isCurrent }: SinglePlaygroundProps) => {
     if (!api) {
       return
     }
-    const pipeline = createApiPipelineWithUrl(session.servicePath)
-    console.log(api?.input)
-    pipeline
+    const pipeline = createApiPipelineWithUrl(session.servicePath, { fetcher })
+    try {
+      pipeline
       .invoke({
         type: 'Single',
         path: api.path,
@@ -67,6 +86,12 @@ const SinglePlayground = ({ session, isCurrent }: SinglePlaygroundProps) => {
       .then((res) => {
         dispatch(sessionActions.setOutput({ id, output: JSON.stringify(res) }))
       })
+      .catch((err) => {
+        console.error(err)
+      })
+    } catch(err) {
+      console.error(err)
+    }
   }
 
   const handleSendClick = () => {
