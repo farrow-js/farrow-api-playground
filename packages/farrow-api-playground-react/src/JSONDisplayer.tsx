@@ -43,7 +43,9 @@ export const JSONDisplayer = ({
 
   useEffect(() => {
     try {
-      editor.current?.getModel()?.setValue(JSON.stringify(JSON.parse(value), null, '\t'))
+      if (value) {
+        editor.current?.getModel()?.setValue(JSON.stringify(JSON.parse(value), null, '\t'))
+      }
     } catch (err) {
       console.error(err)
     }

@@ -41,7 +41,7 @@ export const ApiSelect = ({ id, api, apis: options }: ApiSelectProps) => {
       <ApiSelectController focused={focused} onClick={handleFocus}>
         <ApiSelectInputContainer>
           {!api && <Placeholder>Select...</Placeholder>}
-          <ApiSelectInput value={api ? api.name : ''} onFocus={handleFocus} />
+          <ApiSelectInput value={api ? api.name : ''} onChange={() => {}} onFocus={handleFocus} />
         </ApiSelectInputContainer>
         <IndicatorsContainer>
           <IndicatorSeparator />
