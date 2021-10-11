@@ -57,11 +57,12 @@ export default class MenuBuilder {
       label: 'Electron',
       submenu: [
         {
-          label: 'About Farrow Playground',
+          label: 'About',
           selector: 'orderFrontStandardAboutPanel:',
         },
         { type: 'separator' },
-        { label: 'Services', submenu: [] },
+        // TODO
+        // { label: 'Services', submenu: [] },
         { type: 'separator' },
         {
           label: 'Hide Playground',
@@ -157,27 +158,21 @@ export default class MenuBuilder {
         {
           label: 'Learn More',
           click() {
-            shell.openExternal('https://electronjs.org');
+            shell.openExternal('https://github.com/farrow-js/farrow');
           },
         },
         {
           label: 'Documentation',
           click() {
             shell.openExternal(
-              'https://github.com/electron/electron/tree/main/docs#readme'
+              'https://farrow-js.github.io/farrow-docs/build/'
             );
-          },
-        },
-        {
-          label: 'Community Discussions',
-          click() {
-            shell.openExternal('https://www.electronjs.org/community');
           },
         },
         {
           label: 'Search Issues',
           click() {
-            shell.openExternal('https://github.com/electron/electron/issues');
+            shell.openExternal('https://github.com/farrow-js/farrow/issues');
           },
         },
       ],
@@ -258,27 +253,27 @@ export default class MenuBuilder {
           {
             label: 'Learn More',
             click() {
-              shell.openExternal('https://electronjs.org');
+              shell.openExternal('https://github.com/farrow-js/farrow');
             },
           },
           {
             label: 'Documentation',
             click() {
               shell.openExternal(
-                'https://github.com/electron/electron/tree/main/docs#readme'
+                'https://farrow-js.github.io/farrow-docs/build/'
               );
             },
           },
           {
             label: 'Community Discussions',
             click() {
-              shell.openExternal('https://www.electronjs.org/community');
+              shell.openExternal('https://github.com/farrow-js/farrow/community');
             },
           },
           {
             label: 'Search Issues',
             click() {
-              shell.openExternal('https://github.com/electron/electron/issues');
+              shell.openExternal('https://github.com/farrow-js/farrow/issues');
             },
           },
         ],
