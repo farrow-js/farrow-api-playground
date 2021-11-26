@@ -11,6 +11,8 @@ export type API = {
   path: string[]
   input?: string
   output?: string
+  loading: boolean
+  error?: string | null
   title: string
   description?: string
   deprecated?: string
@@ -104,20 +106,36 @@ export const sessionsSlice = createSlice({
         }
       })
     },
-    updaetInput: (state, { payload: { id, input } }: PayloadAction<{ id: string; input: string }>) => {
+    updaetInput: (state, { payload: { id, path, input } }: PayloadAction<{ id: string; path: string[], input: string }>) => {
       state.sessions.forEach((session) => {
         if (session.id === id) {
           session.apis.forEach((api) => {
-            api.input = input
+            if (equalPath(api.path, path)) {
+              api.input = input
+            }
           })
         }
       })
     },
-    setOutput: (state, { payload: { id, output } }: PayloadAction<{ id: string; output: string }>) => {
+    setOutput: (state, { payload: { id, path, output } }: PayloadAction<{ id: string; path: string[], output: string }>) => {
       state.sessions.forEach((session) => {
         if (session.id === id) {
           session.apis.forEach((api) => {
-            api.output = output
+            if (equalPath(api.path, path)) {
+              api.output = output
+              api.error = null
+            }
+          })
+        }
+      })
+    },
+    setError: (state, { payload: { id, path, error } }: PayloadAction<{ id: string; path: string[], error: string | null }>) => {
+      state.sessions.forEach((session) => {
+        if (session.id === id) {
+          session.apis.forEach((api) => {
+            if (equalPath(api.path, path)) {
+              api.error = error
+            }
           })
         }
       })
@@ -149,6 +167,8 @@ const transformEntries = (entries: FormatEntries | null, path: string[] = []): A
         path: newPath,
         input: '',
         output: '',
+        loading: false,
+        error: null,
       })
     } else {
       list.push({
@@ -158,9 +178,25 @@ const transformEntries = (entries: FormatEntries | null, path: string[] = []): A
         path: newPath,
         input: '',
         output: '',
+        loading: false,
+        error: null,
       })
     }
   }
 
   return list
+}
+
+const equalPath = (a: string[], b: string[]) => {
+  if (a.length !== b.length) {
+    return false
+  }
+
+  for (let i = 0; i < a.length; i ++) {
+    if (a[i] !== b[i]) {
+      return false
+    }
+  }
+
+  return true
 }

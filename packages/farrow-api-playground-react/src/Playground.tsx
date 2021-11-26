@@ -68,7 +68,9 @@ const SinglePlayground = ({ session, isCurrent }: SinglePlaygroundProps) => {
   const dispatch = useAppDispatch()
 
   const handleInputChange = (content: string) => {
-    dispatch(sessionActions.updaetInput({ id, input: content }))
+    if (api) {
+      dispatch(sessionActions.updaetInput({ id, input: content, path: api.path }))
+    }
   }
 
   const send = () => {
@@ -84,12 +86,14 @@ const SinglePlayground = ({ session, isCurrent }: SinglePlaygroundProps) => {
         input: JSON.parse(api?.input || '{}'),
       })
       .then((res) => {
-        dispatch(sessionActions.setOutput({ id, output: JSON.stringify(res) }))
+        dispatch(sessionActions.setOutput({ id, path: api.path, output: JSON.stringify(res) }))
       })
       .catch((err) => {
+        dispatch(sessionActions.setError({ id, path: api.path, error: JSON.stringify(err.message) }))
         console.error(err)
       })
     } catch(err) {
+      dispatch(sessionActions.setError({ id, path: api.path, error: JSON.stringify(err instanceof Error ? err.message : null) }))
       console.error(err)
     }
   }
@@ -116,6 +120,7 @@ const SinglePlayground = ({ session, isCurrent }: SinglePlaygroundProps) => {
           style={{ width: '100%', height: 'auto', minHeight: '350px', border: '1px solid #d4d4d4' }}
         />
       </InputEditorContainer>
+      <ErrorDisplayer>{api?.error}</ErrorDisplayer>
       <OutDisplayerContainer>
         <JSONDisplayer
           id={session.id}
@@ -126,6 +131,13 @@ const SinglePlayground = ({ session, isCurrent }: SinglePlaygroundProps) => {
     </SinglePlaygroundContainer>
   )
 }
+
+const ErrorDisplayer = styled.div`
+  height: 35px;
+  line-height: 35px;
+  color: rgb(242, 92, 84);
+  text-align: right;
+`
 
 const InputEditorContainer = styled.div``
 

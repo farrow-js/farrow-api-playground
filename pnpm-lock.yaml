@@ -199,18 +199,22 @@ importers:
       eslint-plugin-react-hooks: ^4.2.0
       eslint-plugin-testing-library: ^3.9.2
       eslint-webpack-plugin: ^2.5.2
+      farrow-api: ^1.10.8
+      farrow-api-client: 1.10.11
       farrow-api-playground-react: 0.0.1
+      farrow-api-server: ^1.10.8
       file-loader: 6.1.1
       fs-extra: ^9.0.1
       html-webpack-plugin: 4.5.0
       identity-obj-proxy: 3.0.0
+      immer: ^9.0.6
       jest: 26.6.0
       jest-circus: 26.6.0
       jest-resolve: 26.6.0
       jest-watch-typeahead: 0.6.1
       mini-css-extract-plugin: 0.11.3
-      monaco-editor: ^0.28.1
-      monaco-editor-webpack-plugin: ^4.2.0
+      monaco-editor: ^0.30.1
+      monaco-editor-webpack-plugin: ^6.0.0
       optimize-css-assets-webpack-plugin: 5.0.4
       pnp-webpack-plugin: 1.6.4
       postcss-flexbugs-fixes: 4.2.1
@@ -285,8 +289,8 @@ importers:
       jest-resolve: 26.6.0
       jest-watch-typeahead: 0.6.1_jest@26.6.0
       mini-css-extract-plugin: 0.11.3_webpack@4.44.2
-      monaco-editor: 0.28.1
-      monaco-editor-webpack-plugin: 4.2.0_51660f57fd0428cabd62641400774be5
+      monaco-editor: 0.30.1
+      monaco-editor-webpack-plugin: 6.0.0_e96f47c7d495f6fd1552ae58a2e1f326
       optimize-css-assets-webpack-plugin: 5.0.4_webpack@4.44.2
       pnp-webpack-plugin: 1.6.4_typescript@4.4.3
       postcss-flexbugs-fixes: 4.2.1
@@ -316,6 +320,11 @@ importers:
       webpack-dev-server: 3.11.1_webpack@4.44.2
       webpack-manifest-plugin: 2.2.0_webpack@4.44.2
       workbox-webpack-plugin: 5.1.4_webpack@4.44.2
+    devDependencies:
+      farrow-api: 1.10.9
+      farrow-api-client: 1.10.11
+      farrow-api-server: 1.10.9_farrow-api@1.10.9
+      immer: 9.0.6
 
   packages/farrow-api-playground-react:
     specifiers:
@@ -7376,8 +7385,7 @@ packages:
       whatwg-url: 8.7.0
 
   /dataloader/2.0.0:
-    resolution: {integrity: sha1-QerxI9sRWYfiHKk8AFzXdTxV/m8=}
-    dev: false
+    resolution: {integrity: sha512-YzhyDAwA4TaQIhM5go+vCLmU0UikghC/t9DTQYZR2M/UvZ1MdOhPezSDZcjj9uqQJOMqjLcpWtyW2iNINdlatQ==}
 
   /date-fns/2.25.0:
     resolution: {integrity: sha512-ovYRFnTrbGPD4nqaEqescPEv1mNwvt+UTqI3Ay9SzNtey9NZnYu6E2qCcBBgJ6/2VF1zGGygpyTDITqpQQ5e+w==}
@@ -9068,6 +9076,17 @@ packages:
     engines: {'0': node >=0.6.0}
     dev: true
 
+  /farrow-api-client/1.10.11:
+    resolution: {integrity: sha512-mMMeDWk8dR+/mCsrs046SX6iMISYJ0fqTf0QJVPuea7S72eRUx1rfSIQPdW7FqUiV4qNl0Uz49luk6IjYVPXSw==}
+    peerDependencies:
+      farrow-pipeline: ^1.10.7
+    dependencies:
+      dataloader: 2.0.0
+      isomorphic-unfetch: 3.1.0
+      setimmediate: 1.0.5
+      tslib: 2.3.1
+    dev: true
+
   /farrow-api-client/1.10.11_farrow-pipeline@1.10.7:
     resolution: {integrity: sha512-mMMeDWk8dR+/mCsrs046SX6iMISYJ0fqTf0QJVPuea7S72eRUx1rfSIQPdW7FqUiV4qNl0Uz49luk6IjYVPXSw==}
     peerDependencies:
@@ -9094,6 +9113,30 @@ packages:
       lodash.get: 4.4.2
       tslib: 2.3.1
     dev: false
+
+  /farrow-api-server/1.10.9_farrow-api@1.10.9:
+    resolution: {integrity: sha512-KKKjcSjVWlNdKvaat/lW7fBmeEIHP8SP/PYfi3SvUXIJ1f+IBnC8/2fIfRSKfIx3nJANd9Tqq3+zAZQeFped4w==}
+    peerDependencies:
+      farrow-api: ^1.8.0
+      farrow-http: ^1.8.0
+      farrow-pipeline: ^1.8.0
+      farrow-schema: ^1.8.0
+    dependencies:
+      farrow-api: 1.10.9
+      lodash.get: 4.4.2
+      tslib: 2.3.1
+    dev: true
+
+  /farrow-api/1.10.9:
+    resolution: {integrity: sha512-QwhO8Cce/QDGo/SUiHlgACJ26LTtFC8god/xEATENYDiKzcPcAI3AP/txb7Kx682OizQEcaqw6+vvliDP0Aqzg==}
+    peerDependencies:
+      farrow-pipeline: ^1.8.0
+      farrow-schema: ^1.8.0
+    dependencies:
+      cosmiconfig: 7.0.1
+      prettier: 2.4.1
+      tslib: 2.3.1
+    dev: true
 
   /farrow-api/1.10.9_e881b1b549c0b1ee66de45efbadb6de3:
     resolution: {integrity: sha512-QwhO8Cce/QDGo/SUiHlgACJ26LTtFC8god/xEATENYDiKzcPcAI3AP/txb7Kx682OizQEcaqw6+vvliDP0Aqzg==}
@@ -10395,7 +10438,6 @@ packages:
 
   /immer/9.0.6:
     resolution: {integrity: sha512-G95ivKpy+EvVAnAab4fVa4YGYn24J1SpEktnJX7JJ45Bd7xqME/SCplFzYFmTbrkwZbQ4xJK1xMTUYBkN6pWsQ==}
-    dev: false
 
   /import-cwd/2.1.0:
     resolution: {integrity: sha1-qmzzbnInYShcs3HsZRn1PiQ1sKk=}
@@ -11010,11 +11052,10 @@ packages:
     engines: {node: '>=0.10.0'}
 
   /isomorphic-unfetch/3.1.0:
-    resolution: {integrity: sha1-hzQdX097Y4Q9RoQ4Eoywh7fD6Y8=}
+    resolution: {integrity: sha512-geDJjpoZ8N0kWexiwkX8F9NkTsXhetLPVbZFQ+JTW239QNOwvB0gniuR1Wc6f0AMTn7/mFGyXvHTifrCp/GH8Q==}
     dependencies:
       node-fetch: 2.6.5
       unfetch: 4.2.0
-    dev: false
 
   /isstream/0.1.2:
     resolution: {integrity: sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=}
@@ -13100,17 +13141,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /monaco-editor-webpack-plugin/4.2.0_51660f57fd0428cabd62641400774be5:
-    resolution: {integrity: sha512-/P3sFiEgBl+Y50he4mbknMhbLJVop5gBUZiPS86SuHUDOOnQiQ5rL1jU5lwt1XKAwMEkhwZbUwqaHxTPkb1Utw==}
-    peerDependencies:
-      monaco-editor: 0.25.x || 0.26.x || 0.27.x || 0.28.x
-      webpack: ^4.5.0 || 5.x
-    dependencies:
-      loader-utils: 2.0.0
-      monaco-editor: 0.28.1
-      webpack: 4.44.2
-    dev: false
-
   /monaco-editor-webpack-plugin/4.2.0_9bb722b8091512d5105294744a28587f:
     resolution: {integrity: sha512-/P3sFiEgBl+Y50he4mbknMhbLJVop5gBUZiPS86SuHUDOOnQiQ5rL1jU5lwt1XKAwMEkhwZbUwqaHxTPkb1Utw==}
     peerDependencies:
@@ -13122,12 +13152,27 @@ packages:
       webpack: 5.57.0_webpack-cli@4.8.0
     dev: true
 
+  /monaco-editor-webpack-plugin/6.0.0_e96f47c7d495f6fd1552ae58a2e1f326:
+    resolution: {integrity: sha512-vC886Mzpd2AkSM35XLkfQMjH+Ohz6RISVwhAejDUzZDheJAiz6G34lky1vyO8fZ702v7IrcKmsGwL1rRFnwvUA==}
+    peerDependencies:
+      monaco-editor: 0.30.x
+      webpack: ^4.5.0 || 5.x
+    dependencies:
+      loader-utils: 2.0.0
+      monaco-editor: 0.30.1
+      webpack: 4.44.2
+    dev: false
+
   /monaco-editor/0.25.2:
     resolution: {integrity: sha512-5iylzSJevCnzJn9UVsW8yOZ3yHjmAs4TfvH3zsbftKiFKmHG0xirGN6DK9Kk04VSWxYCZZAIafYJoNJJMAU1KA==}
     dev: true
 
   /monaco-editor/0.28.1:
     resolution: {integrity: sha512-P1vPqxB4B1ZFzTeR1ScggSp9/5NoQrLCq88fnlNUsuRAP1usEBN4TIpI2lw0AYIZNVIanHk0qwjze2uJwGOHUw==}
+    dev: false
+
+  /monaco-editor/0.30.1:
+    resolution: {integrity: sha512-B/y4+b2O5G2gjuxIFtCE2EkM17R2NM7/3F8x0qcPsqy4V83bitJTIO4TIeZpYlzu/xy6INiY/+84BEm6+7Cmzg==}
     dev: false
 
   /moo/0.5.1:
@@ -16686,7 +16731,6 @@ packages:
 
   /setimmediate/1.0.5:
     resolution: {integrity: sha1-KQy7Iy4waULX1+qbg3Mqt4VvgoU=}
-    dev: false
 
   /setprototypeof/1.1.0:
     resolution: {integrity: sha512-BvE/TwpZX4FXExxOxZyRGQQv651MSwmWKZGqvmPcRIjDqWub67kTKuIMx43cZZrS/cBBzwBcNDWoFxt2XEFIpQ==}
@@ -18134,8 +18178,7 @@ packages:
       which-boxed-primitive: 1.0.2
 
   /unfetch/4.2.0:
-    resolution: {integrity: sha1-fiGw7302PY2a8PuSmlVV9u+Xo74=}
-    dev: false
+    resolution: {integrity: sha512-F9p7yYCn6cIW9El1zi0HI6vqpeIvBsr3dSuRO6Xuppb1u5rXpCPmMvLSyECLhybr9isec8Ohl0hPekMVrEinDA==}
 
   /unicode-canonical-property-names-ecmascript/2.0.0:
     resolution: {integrity: sha512-yY5PpDlfVIU5+y/BSCxAJRBIS1Zc2dDG3Ujq+sR0U+JjUevW2JhocOF+soROYDSaAezOzOKuyyixhD6mBknSmQ==}
