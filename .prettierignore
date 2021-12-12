@@ -1,7 +1,0 @@
-examples/.cache
-node_modules
-dist
-esm
-packages/farrow-schema/src/formatter.ts
-packages/farrow-schema/src/validator.ts
-build
