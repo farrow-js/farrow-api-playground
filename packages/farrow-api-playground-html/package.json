@@ -1,5 +1,6 @@
 {
   "name": "farrow-api-playground-html",
+  "homepage": "https://farrow-js.github.io/playground/",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
